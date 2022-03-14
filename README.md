@@ -1,1 +1,3 @@
-# javascriptIntroduction
+# JavaScript Introduction
+
+Repos tugas javascript introduction
