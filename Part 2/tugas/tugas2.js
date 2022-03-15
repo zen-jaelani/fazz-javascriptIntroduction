@@ -11,9 +11,15 @@ function searchName(find, size, callback) {
         if (size > 0) {
 
             result = callback(find);
-            if (result.length > size) {
-                size = result.length - size
-                return result.slice(0, -size); // menghapus index array sesuai ketentuan parameter
+
+            if (result.length == 0) {
+
+                return "Tidak ada yang cocok"
+
+            } else if (result.length > size) {
+
+                return result.slice(0, size); // mengextract array dengan range index 0 sampai size-1
+
             } else {
                 return result
             }
