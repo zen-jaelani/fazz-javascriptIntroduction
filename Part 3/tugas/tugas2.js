@@ -5,7 +5,7 @@ const getMonth = (callback) => {
             'Januari', 'Februari', 'Maret',
             'April', 'Mei', 'Juni',
             'Juli', 'Agustus', 'September',
-            'Oktober', 'November', 'december'
+            'Oktober', 'November', 'December'
         ]
         if (!error) {
             callback(null, month)
@@ -15,11 +15,11 @@ const getMonth = (callback) => {
     }, 200);
 }
 
-function showMonth(cek, month) {
-    if (cek == null && month.lenght != 0) {
-        return month.map((item, i) => console.log(`bulan ke ${i+1} adalah ${item}`))
+function showMonth(cekError, month) {
+    if (cekError == null && month.lenght != 0) {
+        month.map((item, i) => console.log(`bulan ke-${i+1} adalah ${item}`))
     } else {
-        return console.log(cek);
+        console.log(cekError);
     }
 }
 

@@ -1,13 +1,31 @@
-//1
+//1. Konversi suhu fanrenheit ke celcius
 
+const temperature = (input) =>
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("#Konversi fahrenheit ke celcius\n");
+            if (typeof(input) == "number") {
 
+                let result = ((input - 32) * 5 / 9).toFixed(2)
+
+                resolve(result)
+            } else {
+                reject(new Error("pastikan input sudah benar"))
+            }
+        }, 300);
+    })
+let input = 100
+temperature(input)
+    .then((result) => console.log(`${input}F = ${result}C`))
+    .catch((error) => console.log(error))
+    .finally(() => console.log("=".repeat(30)))
 
 // 2. Game Batu Kertas Gunting
 
 const choice = ["batu", "kertas", "gunting"]
 
-const player = (player) => {
-    return new Promise((resolve, reject) => {
+const player = (player) =>
+    new Promise((resolve, reject) => {
         setTimeout(() => {
             player = player.toLowerCase()
             if (typeof(player) == "string" && choice.includes(player)) {
@@ -17,17 +35,16 @@ const player = (player) => {
             }
         }, 100);
     })
-}
-const computer = () => {
-    return new Promise((resolve, reject) => {
+
+const computer = () =>
+    new Promise((resolve, reject) => {
         setTimeout(() => {
             random = Math.floor(Math.random() * 3)
             resolve(choice[random])
         }, 300);
     })
-}
 
-const play = (a, b) => {
+const play = (player, computer) => {
     setTimeout(() => {
         let result
         let pilihan = {
@@ -35,18 +52,19 @@ const play = (a, b) => {
             kertas: { kalah: "gunting", menang: "batu" },
             gunting: { kalah: "batu", menang: "kertas" }
         }
-        if (pilihan[a].menang == b) {
+        if (pilihan[player].menang == computer) {
             result = "Player menang"
-        } else if (pilihan[a].kalah == b) {
+        } else if (pilihan[player].kalah == computer) {
             result = "Computer menang"
         } else {
             result = "Pertandingan seri"
         }
-        console.log(`
-                Player memilih : ${a}
-                Computer memilih : ${b}
-                Hasil permainan : ${result} 
-            `);
+        console.log(
+            "#permainan batu kertas gunting \n",
+            "\nPlayer memilih: " + player,
+            "\nComputer memilih: " + computer,
+            "\nHasil permainan: " + result
+        );
     }, 200);
 }
 

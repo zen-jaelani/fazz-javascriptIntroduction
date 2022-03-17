@@ -9,17 +9,15 @@
 </head>
 
 <body>
-    <ol id="name"></ol>
+    <ol></ol>
     <script>
         fetch("https://jsonplaceholder.typicode.com/users")
-            .then((hasil) => hasil.json())
+            .then((response) => response.json())
             .then((data) => data.map(i => {
-
-                console.log(i.name);
 
                 const list = document.createElement("li")
                 list.innerHTML = i.name
-                document.querySelector("#name").appendChild(list)
+                document.querySelector("ol").appendChild(list)
 
             }))
             .catch((error) => alert(error))
